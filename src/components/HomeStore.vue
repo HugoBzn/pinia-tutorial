@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Hi HomeStore</h1>
+    <br />
     <Counter />
   </div>
 </template>
