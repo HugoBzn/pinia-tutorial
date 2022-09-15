@@ -2,11 +2,8 @@ import { defineStore } from "pinia";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
-    isAuthenticated: true,
-    user: {
-      name: "Sara",
-      email: "sara@gmail.com",
-    },
+    isAuthenticated: false,
+    user: {},
   }),
   actions: {
     logout() {
@@ -14,8 +11,14 @@ export const useAuthStore = defineStore("auth", {
         (state.isAuthenticated = false), (state.user = {});
       });
     },
-    login() {
-      this.$reset();
+    async login() {
+      const res = await fetch("https://reqres.in/api/users/2");
+      const { data } = await res.json();
+      this.user = data;
+      this.isAuthenticated = true;
     },
+  },
+  getters: {
+    fullName: (state) => `${state.user.first_name} ${state.user.last_name}`,
   },
 });

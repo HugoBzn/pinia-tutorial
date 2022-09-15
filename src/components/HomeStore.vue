@@ -1,9 +1,9 @@
 <template>
   <main>
     <div v-if="authStore.isAuthenticated">
-      <p>User name is: {{ authStore.user.name }}</p>
+      <p>User name is: {{ authStore.fullName }}</p>
     </div>
-    <br/>
+    <br />
     <Counter />
   </main>
 </template>
