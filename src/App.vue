@@ -3,7 +3,8 @@
     <div class="wrapper">
       <nav>
         <a href="/">Home</a> |
-        <button @click="logout">Logout</button>
+        <button @click="logout" v-if="authStore.isAuthenticated">Logout</button>
+        <button @click="login" v-else>Login</button>
       </nav>
     </div>
   </header>
@@ -22,6 +23,10 @@ function logout() {
   authStore.$patch((state) => {
     (state.isAuthenticated = false), (state.user = {});
   });
+}
+
+function login() {
+  authStore.$reset();
 }
 </script>
 
