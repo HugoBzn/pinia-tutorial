@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button @click="increment">Increment +</button> |
-    <button @click="decrement">Decrement -</button>
+    <button @click="store.increment">Increment +</button> |
+    <button @click="store.decrement">Decrement -</button>
     <!-- Have count value -->
     <p>Count value: {{ store.count }}</p>
     <br />
@@ -13,14 +13,6 @@
 import { useCounterStore } from "@/stores/counter";
 
 const store = useCounterStore();
-
-function increment() {
-  store.count++;
-}
-
-function decrement() {
-  store.count--;
-}
 </script>
 
 <style scoped></style>
